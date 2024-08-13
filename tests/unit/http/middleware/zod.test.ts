@@ -39,7 +39,7 @@ describe('validateRequest', () => {
   })
 
   it('should call next function if request query is valid', async () => {
-    mockRequest.query = { page: 1 }
+    mockRequest.query = <any>{ page: 1 }
     const schema = z.object({
       page: z.number()
     })
