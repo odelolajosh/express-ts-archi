@@ -12,6 +12,10 @@ type HttpErrorParams = {
   context?: { [key: string]: any }
 }
 
+/**
+ * Http error
+ * @extends ApplicationError
+ */
 export class HttpError extends ApplicationError<HttpsErrorContent> {
   private static readonly _statusCode = 400
   private readonly _code: number
@@ -43,36 +47,60 @@ export class HttpError extends ApplicationError<HttpsErrorContent> {
   }
 }
 
+/**
+ * Not found error
+ * @extends HttpError
+ */
 export class NotFoundError extends HttpError {
   constructor(params?: HttpErrorParams) {
     super({ code: 404, message: "Not found", ...params })
   }
 }
 
+/**
+ * Bad request error
+ * @extends HttpError
+ */
 export class BadRequestError extends HttpError {
   constructor(params?: HttpErrorParams) {
     super({ code: 400, message: "Bad request", ...params })
   }
 }
 
+/**
+ * Unauthorized error
+ * @extends HttpError
+ */
 export class UnauthorizedError extends HttpError {
   constructor(params?: HttpErrorParams) {
     super({ code: 401, message: "Unauthorized", ...params })
   }
 }
 
+/**
+ * Forbidden error
+ * @extends HttpError
+ */
 export class ForbiddenError extends HttpError {
   constructor(params?: HttpErrorParams) {
     super({ code: 403, message: "Forbidden", ...params })
   }
 }
 
+/**
+ * Internal server error
+ * @extends HttpError
+ */
 export class InternalServerError extends HttpError {
   constructor(params?: HttpErrorParams) {
     super({ code: 500, message: "Internal server error", ...params })
   }
 }
 
+/**
+ * Not implemented error
+ * @extends HttpError
+ */
 export class NotImplemented extends HttpError {
   constructor(params?: HttpErrorParams) {
     super({ code: 501, message: "Not implemented", ...params })

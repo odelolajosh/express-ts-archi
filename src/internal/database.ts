@@ -2,6 +2,10 @@ import { Client } from "./client"
 
 type DatabaseClient = unknown
 
+/**
+ * Database wrapper
+ * @implements Client
+ */
 class Database implements Client<unknown> {
   private _client: DatabaseClient
 
