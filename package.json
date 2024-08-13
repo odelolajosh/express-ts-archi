@@ -9,16 +9,24 @@
     "build:clean": "rimraf dist; exit 0",
     "dev": "nodemon",
     "ts:build": "tsc -p tsconfig.prod.json --outDir dist",
-    "ts:check": "tsc -p tsconfig.prod.json --noEmit"
+    "ts:check": "tsc -p tsconfig.prod.json --noEmit",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:unit": "vitest --project unit",
+    "test:e2e": "vitest --project e2e"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/supertest": "^6.0.2",
     "nodemon": "^3.1.4",
+    "supertest": "^7.0.0",
     "tsx": "^4.17.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0",
+    "vitest": "^2.0.5"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
