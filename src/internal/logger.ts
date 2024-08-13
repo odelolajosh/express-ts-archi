@@ -3,7 +3,7 @@
  * Handles logging of messages for the application
  * @class
  */
-export class Logger {
+class Logger {
   /**
    * Log a message
    * @param message - message to log

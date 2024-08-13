@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 import { ApplicationError } from "@/internal/error"
+import { logger } from "@/internal/logger"
 
 /**
  * Application error handler.
@@ -16,11 +17,7 @@ export const errorHandler = (error: Error, req: Request, res: Response, next: Ne
     const { statusCode, errors, stack } = error
 
     if (error.logging) {
-      console.error(JSON.stringify({
-        code: statusCode,
-        errors: errors,
-        stack: stack,
-      }, null, 2))
+      logger.error(error.message, { stack, errors, url: req.url })
     }
 
     return res.status(statusCode).send({ errors })
