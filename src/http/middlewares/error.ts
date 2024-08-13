@@ -1,8 +1,18 @@
 import { NextFunction, Request, Response } from "express"
-import { HttpError } from "../../internal/http"
+import { ApplicationError } from "@/internal/error"
 
-export const errorMiddleware = (error: Error, req: Request, res: Response, next: NextFunction) => {
-  if (error instanceof HttpError) {
+/**
+ * Application error handler.
+ * This function will handle all errors thrown by the application.
+ * 
+ * @param error
+ * @param req 
+ * @param res 
+ * @param next 
+ * @returns 
+ */
+export const errorHandler = (error: Error, req: Request, res: Response, next: NextFunction) => {
+  if (error instanceof ApplicationError) {
     const { statusCode, errors, stack } = error
 
     if (error.logging) {
