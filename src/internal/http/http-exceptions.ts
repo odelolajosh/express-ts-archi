@@ -1,4 +1,4 @@
-import { ApplicationError } from "./error"
+import { ApplicationError } from "../error"
 
 type HttpsErrorContent = {
   message: string
